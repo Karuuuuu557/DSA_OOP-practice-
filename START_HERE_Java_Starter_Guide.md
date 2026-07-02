@@ -16,11 +16,11 @@ public class MyProgram {
 }
 ```
 
-| Part | What it means |
-|------|---------------|
-| `public class MyProgram` | The name of your program. **File name MUST match this exactly.** |
-| `public static void main(String[] args)` | The entry point — Java starts executing from here. |
-| `// YOUR CODE GOES HERE` | Where you write your actual logic |
+| Part                                     | What it means                                                    |
+| ---------------------------------------- | ---------------------------------------------------------------- |
+| `public class MyProgram`                 | The name of your program. **File name MUST match this exactly.** |
+| `public static void main(String[] args)` | The entry point — Java starts executing from here.               |
+| `// YOUR CODE GOES HERE`                 | Where you write your actual logic                                |
 
 > ⚠️ **Rule #1:** If your class is `HelloWorld`, your file MUST be named `HelloWorld.java`
 
@@ -29,6 +29,7 @@ public class MyProgram {
 ## 📌 Step 2: The 5 Things You'll Use 90% of the Time
 
 ### 1. Variables — Store data
+
 ```java
 int age = 20;                  // whole number
 double price = 99.99;          // decimal number
@@ -38,6 +39,7 @@ char grade = 'A';              // single character (use single quotes!)
 ```
 
 ### 2. Output — Show things on screen
+
 ```java
 System.out.println("Hello!");      // prints with new line
 System.out.print("No newline");   // prints without new line
@@ -45,6 +47,7 @@ System.out.println("Age: " + age); // combine text + variable
 ```
 
 ### 3. Input — Get things from the user
+
 ```java
 import java.util.Scanner;  // put this AT THE VERY TOP of your file
 
@@ -65,6 +68,7 @@ input.nextLine();                      // clear again!
 > ⚠️ **Rule #2:** After `nextInt()` or `nextDouble()`, ALWAYS call `input.nextLine()` once to clear the leftover newline character!
 
 ### 4. Conditions — Make decisions
+
 ```java
 if (age >= 18) {
     System.out.println("Adult");
@@ -76,6 +80,7 @@ if (age >= 18) {
 ```
 
 ### 5. Loops — Repeat things
+
 ```java
 // FOR loop — when you know HOW MANY TIMES to repeat
 for (int i = 0; i < 5; i++) {
@@ -98,12 +103,14 @@ Don't just jump into typing. Follow this process:
 
 ### Example: "Write a program that asks for 3 numbers and prints the largest"
 
-**Step 1 — What do I need?**
+#### Step 1 — What do I need?
+
 - 3 number variables
 - A way to compare them
 - A Scanner for input
 
-**Step 2 — Write the skeleton**
+#### Step 2 — Write the skeleton
+
 ```java
 import java.util.Scanner;
 
@@ -114,7 +121,8 @@ public class FindLargest {
 }
 ```
 
-**Step 3 — Add variables**
+#### Step 3 — Add variables
+
 ```java
 import java.util.Scanner;
 
@@ -127,7 +135,8 @@ public class FindLargest {
 }
 ```
 
-**Step 4 — Add input**
+#### Step 4 — Add input
+
 ```java
 System.out.print("Enter first number: ");
 num1 = input.nextInt();
@@ -142,7 +151,8 @@ num3 = input.nextInt();
 input.nextLine();
 ```
 
-**Step 5 — Add logic**
+#### Step 5 — Add logic
+
 ```java
 largest = num1;                 // assume first is largest
 if (num2 > largest) largest = num2;
@@ -157,38 +167,43 @@ System.out.println("The largest number is: " + largest);
 
 ## 📌 Step 4: How to Run Java in VS Code
 
-### One-time setup:
+### One-time setup
+
 1. Install [VS Code](https://code.visualstudio.com/) if you haven't
 2. Install the **"Extension Pack for Java"** extension (by Microsoft)
 3. Install **JDK** — [Download here](https://adoptium.net/temurin/releases/)
 
-### To run a Java file:
+### To run a Java file
+
 - **Option A:** Click the ▶️ **Run** button above your `main` method
 - **Option B:** Open terminal in VS Code (`Ctrl + ~`) and type:
+
   ```bash
   javac MyProgram.java
   java MyProgram
   ```
 
-### Folder setup for VS Code:
-```
+### Folder setup for VS Code
+
+```text
 MyProject/
 ├── MyProgram.java    ← your code goes here
 ```
+
 No packages needed for simple programs! Just put the `.java` file in a folder and run it.
 
 ---
 
 ## 📌 Step 5: Common Mistakes Beginners Make
 
-| Mistake | ❌ Wrong | ✅ Correct | Why |
-|---------|---------|-----------|-----|
-| Comparing Strings | `if (name == "Carl")` | `if (name.equals("Carl"))` | `==` compares memory address, not content |
-| Forgetting semicolons | `int x = 5` | `int x = 5;` | Every statement needs `;` |
-| File vs class mismatch | File: `Hello.java`<br>Class: `public class Hi` | File: `Hello.java`<br>Class: `public class Hello` | They must match exactly |
-| Not clearing Scanner | `nextInt(); nextLine();` | `nextInt(); nextLine();`<br>`nextLine();` | Extra `nextLine()` clears leftover newline |
-| Array length | `arr.length()` | `arr.length` | No parentheses for arrays! |
-| String length | `str.length` | `str.length()` | Needs parentheses for Strings! |
+| Mistake                | ❌ Wrong                                     | ✅ Correct                                      | Why                                        |
+| ---------------------- | -------------------------------------------- | ----------------------------------------------- | ------------------------------------------ |
+| Comparing Strings      | `if (name == "Carl")`                        | `if (name.equals("Carl"))`                      | `==` compares memory address, not content  |
+| Forgetting semicolons  | `int x = 5`                                  | `int x = 5;`                                    | Every statement needs `;`                  |
+| File vs class mismatch | File: `Hello.java`; Class: `public class Hi` | File: `Hello.java`; Class: `public class Hello` | They must match exactly                    |
+| Not clearing Scanner   | `nextInt(); nextLine();`                     | `nextInt(); nextLine(); nextLine();`            | Extra `nextLine()` clears leftover newline |
+| Array length           | `arr.length()`                               | `arr.length`                                    | No parentheses for arrays!                 |
+| String length          | `str.length`                                 | `str.length()`                                  | Needs parentheses for Strings!             |
 
 ---
 
@@ -196,7 +211,8 @@ No packages needed for simple programs! Just put the `.java` file in a folder an
 
 Open **`StarterExercises.java`** (in the same folder as this file) and try to complete the exercises inside. Each exercise gets slightly harder. Don't worry if you get stuck — that's how you learn!
 
-**Tips while coding:**
+### Tips while coding
+
 - ✅ **Start with the skeleton** (class + main) — always
 - ✅ **Write ONE line at a time** — compile/run after every few lines
 - ✅ **Print variables** to check if your code is doing what you expect
@@ -205,9 +221,9 @@ Open **`StarterExercises.java`** (in the same folder as this file) and try to co
 
 ---
 
-*You got this. Start small, break things, fix them, repeat. That's how everyone learns.*
+_You got this. Start small, break things, fix them, repeat. That's how everyone learns._
 
-# Java Complete Learning Guide (Beginner → Intermediate → Pro)
+## Java Complete Learning Guide (Beginner → Intermediate → Pro)
 
 > This file is a **full teaching roadmap** with examples. Study top to bottom, code every snippet, and build mini-projects as you go.
 
@@ -763,19 +779,19 @@ System.out.println(pq.poll()); // 1
 
 ## 20) Practice Projects by Level
 
-**Beginner**
+### Beginner
 
 - Calculator
 - Number guessing game
 - Student grade manager (array/list)
 
-**Intermediate**
+### Intermediate
 
 - To-do CLI app (file save/load)
 - Library management system (OOP + collections)
 - Expense tracker (CSV/JSON)
 
-**Pro**
+### Pro
 
 - REST API with Spring Boot + DB
 - Multithreaded file indexer
