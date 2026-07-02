@@ -233,7 +233,7 @@ public class ArraysDemo {
     // ---- MAIN ----
     public static void main(String[] args) {
         System.out.println("========================================");
-        System.out.println("   ARRAYS — Data Structures Basics      ");
+        System.out.println("   ARRAYS  Data Structures Basics      ");
         System.out.println("========================================");
 
         demonstrateTraversal();
