@@ -1,8 +1,24 @@
+import java.util.Scanner;
 public class Arrays {
 
-    static int[] arr = {10, 20, 30, 40, 50}; 
-    // create an integer array named arr with 5 elements
-    
+    static int[] arr;
+
+    static void getInput() {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = input.nextInt();
+
+        arr = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
+        }
+        input.close();
+    }
+
     static void printArray(int[] arr) {
 
         System.out.print("Array: ");
@@ -11,9 +27,7 @@ public class Arrays {
 
             // i = arr.length, arr.length = 5, minus 1 to get the last index, which is 4.
             // So i = 4, 3, 2, 1, 0
-
             // if i >= 0, then print arr[i], which is arr[4], arr[3], arr[2], arr[1], arr[0]
-
             // if i < 0, then stop the loop
 
             System.out.print(arr[i]);
@@ -37,6 +51,8 @@ public class Arrays {
 
     public static void main(String[] args) {
 
+
+        getInput();
         printArray(arr);
 
         // call the printArray method and pass the array as its argument
