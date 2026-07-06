@@ -1,9 +1,9 @@
 import java.util.Scanner;
-public class Arrays {
+public class ArraysOutputs {
 
     static int[] arr;
 
-    static void getInput() {
+    static void getInput1() {
 
         Scanner input = new Scanner(System.in);
 
@@ -19,7 +19,7 @@ public class Arrays {
         input.close();
     }
 
-    static void printArray(int[] arr) {
+    static void printArrayTraversalReverse(int[] arr) {
 
         System.out.print("Array: ");
 
@@ -51,9 +51,8 @@ public class Arrays {
 
     public static void main(String[] args) {
 
-
-        getInput();
-        printArray(arr);
+        getInput1();
+        printArrayTraversalReverse(arr);
 
         // call the printArray method and pass the array as its argument
     }
