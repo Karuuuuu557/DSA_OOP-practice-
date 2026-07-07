@@ -7,7 +7,7 @@ public class ArraysOutputs {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter the size of the array: ");
+        System.out.print("Enter the size of the array for reverse traversal: ");
         int size = input.nextInt();
 
         arr = new int[size];
@@ -16,7 +16,6 @@ public class ArraysOutputs {
             System.out.print("Enter element " + (i + 1) + ": ");
             arr[i] = input.nextInt();
         }
-        input.close();
     }
 
     static void printArrayTraversalReverse(int[] arr) {
@@ -53,7 +52,7 @@ public class ArraysOutputs {
 
             Scanner input = new Scanner(System.in);
 
-            System.out.print("Enter the size of the array: ");
+            System.out.print("Enter the size of the array for normal traversal: ");
             int size = input.nextInt();
 
             arr = new int[size];
@@ -94,11 +93,13 @@ public class ArraysOutputs {
             // print the size of the array
         }
 
-
     public static void main(String[] args) {
 
         getInput1();
         printArrayTraversalReverse(arr);
+
+        getInput2();
+        printArrayTraversal(arr);
 
         // call the printArray method and pass the array as its argument
     }
