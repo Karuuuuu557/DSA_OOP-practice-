@@ -101,6 +101,6 @@ public class ArraysOutputs {
         getInput2();
         printArrayTraversal(arr);
 
-        // call the printArray method and pass the array as its argument
+        // call the getters and printArray method and pass the array as its argument
     }
 }
