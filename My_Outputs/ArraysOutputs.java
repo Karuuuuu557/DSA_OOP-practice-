@@ -37,6 +37,7 @@ public class ArraysOutputs {
         }
 
         System.out.println();
+        
         System.out.println("Size: " + arr.length + " elements");
     }
 
@@ -72,6 +73,7 @@ public class ArraysOutputs {
         }
 
         System.out.println();
+
         System.out.println("Size: " + arr.length + " elements");
     }
 
