@@ -37,7 +37,7 @@ public class ArraysOutputs {
         }
 
         System.out.println();
-        
+
         System.out.println("Size: " + arr.length + " elements");
     }
 
@@ -56,18 +56,18 @@ public class ArraysOutputs {
             System.out.print("Enter element " + (i + 1) + ": ");
             arr[i] = input.nextInt();
         }
-        input.close();
     }
 
-    // Prints the array using the same loop idea as the reverse example.
+    // Prints the array from the first index to the last index.
     static void printArrayTraversal(int[] arr) {
         System.out.print("Array: ");
 
-        // This loop still goes backward, so the output will be reversed.
-        for (int i = arr.length - 1; i >= 0; i--) {
+        // Start from the first element and move forward.
+        for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
 
-            if (i > 0) {
+            // Add a comma between values, except after the last one.
+            if (i < arr.length - 1) {
                 System.out.print(", ");
             }
         }
@@ -77,13 +77,69 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
+    // Takes input for the third example: conditional traversal.
+    static void getInput3() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array for conditional traversal: ");
+        int size = input.nextInt();
+
+        // Create a new array using the user's chosen size.
+        arr = new int[size];
+
+        // Store each value in the array.
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
+        }
+
+        input.close();
+    }
+
+    // Prints only the even numbers in the array.
+    static void printConditionalTraversal(int[] arr) {
+        System.out.print("Even Numbers: ");
+
+        boolean found = false;
+
+        // Traverse the array from the first index to the last index.
+        for (int i = 0; i < arr.length; i++) {
+
+            // Check if the current element is even.
+            if (arr[i] % 2 == 0) {
+
+                // Print a comma before the next even number.
+                if (found) {
+                    System.out.print(", ");
+                }
+
+                System.out.print(arr[i]);
+                found = true;
+            }
+        }
+
+        // If no even numbers were found, display a message.
+        if (!found) {
+            System.out.print("No even numbers found.");
+        }
+
+        System.out.println();
+
+        System.out.println("Size: " + arr.length + " elements");
+    }
+
     public static void main(String[] args) {
+
         // First example: collect input and print the array in reverse order.
         getInput1();
         printArrayTraversalReverse(arr);
 
-        // Second example: collect input and print the array again.
+        // Second example: collect input and print the array in normal order.
         getInput2();
         printArrayTraversal(arr);
+
+        // Third example: collect input and print only the even numbers.
+        getInput3();
+        printConditionalTraversal(arr);
     }
 }
