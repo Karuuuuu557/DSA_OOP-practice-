@@ -192,6 +192,23 @@ public class ArraysOutputs {
         input.close();
     }
 
+    // Takes input for the sixth example: summation/average traversal.
+static void getInput6() {
+    Scanner input = new Scanner(System.in);
+
+    System.out.print("\nEnter the size of the array for summation/average traversal: ");
+    int size = input.nextInt();
+
+    // Create a new array using the user's chosen size.
+    arr = new int[size];
+
+    // Store each value in the array.
+    for (int i = 0; i < size; i++) {
+        System.out.print("Enter element " + (i + 1) + ": ");
+        arr[i] = input.nextInt();
+    }
+}
+
     // Modifies each element in the array by multiplying it by 2.
     static void printModificationTraversal(int[] arr) {
 
@@ -215,6 +232,26 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
+    // Calculates the sum and average of the array elements.
+static void printSummationAverageTraversal(int[] arr) {
+
+    int sum = 0;
+    double average;
+
+    // Traverse the array and calculate the sum.
+    for (int i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    // Calculate the average.
+    average = (double) sum / arr.length;
+
+    System.out.println("Summation/Average Traversal");
+    System.out.println("Sum: " + sum);
+    System.out.println("Average: " + average);
+    System.out.println("Size: " + arr.length + " elements");
+}
+
     public static void main(String[] args) {
 
         // First example: collect input and print the array in reverse order.
@@ -236,5 +273,9 @@ public class ArraysOutputs {
         // Fifth example: collect input and modify each element in the array.
         getInput5();
         printModificationTraversal(arr);
+
+        // Sixth example: collect input and calculate the sum and average.
+        getInput6();
+        printSummationAverageTraversal(arr);
     }
 }
