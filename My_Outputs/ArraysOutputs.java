@@ -25,7 +25,6 @@ public class ArraysOutputs {
         }
     }
 
-
     // Prints the array from the last index to the first index.
     static void printArrayTraversalReverse(int[] arr) {
         System.out.print("Reverse Traversal: ");
@@ -45,7 +44,6 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
-
     // Takes input for the second example: normal traversal.
     static void getInput2() {
         Scanner input = new Scanner(System.in);
@@ -62,7 +60,6 @@ public class ArraysOutputs {
             arr[i] = input.nextInt();
         }
     }
-
 
     // Prints the array from the first index to the last index.
     static void printArrayTraversal(int[] arr) {
@@ -83,7 +80,6 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
-
     // Takes input for the third example: conditional traversal.
     static void getInput3() {
         Scanner input = new Scanner(System.in);
@@ -100,7 +96,6 @@ public class ArraysOutputs {
             arr[i] = input.nextInt();
         }
     }
-
 
     // Prints only the even numbers in the array.
     static void printConditionalTraversal(int[] arr) {
@@ -132,7 +127,6 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
-
     // Takes input for the fourth example: search traversal.
     static void getInput4() {
         Scanner input = new Scanner(System.in);
@@ -153,7 +147,6 @@ public class ArraysOutputs {
         System.out.print("Enter the value to search: ");
         target = input.nextInt();
     }
-
 
     // Searches for a specific value in the array.
     static void printSearchTraversal(int[] arr) {
@@ -180,6 +173,47 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
+    // Takes input for the fifth example: modification traversal.
+    static void getInput5() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("\nEnter the size of the array for modification traversal: ");
+        int size = input.nextInt();
+
+        // Create a new array using the user's chosen size.
+        arr = new int[size];
+
+        // Store each value in the array.
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
+        }
+
+        input.close();
+    }
+
+    // Modifies each element in the array by multiplying it by 2.
+    static void printModificationTraversal(int[] arr) {
+
+        System.out.print("Modified Array: ");
+
+        // Traverse the array and modify each element.
+        for (int i = 0; i < arr.length; i++) {
+
+            // Multiply the current element by 2.
+            arr[i] = arr[i] * 2;
+
+            System.out.print(arr[i]);
+
+            // Add a comma between values, except after the last one.
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println();
+        System.out.println("Size: " + arr.length + " elements");
+    }
 
     public static void main(String[] args) {
 
@@ -187,19 +221,20 @@ public class ArraysOutputs {
         getInput1();
         printArrayTraversalReverse(arr);
 
-
         // Second example: collect input and print the array in normal order.
         getInput2();
         printArrayTraversal(arr);
-
 
         // Third example: collect input and print only the even numbers.
         getInput3();
         printConditionalTraversal(arr);
 
-
         // Fourth example: collect input and search for a value in the array.
         getInput4();
         printSearchTraversal(arr);
+
+        // Fifth example: collect input and modify each element in the array.
+        getInput5();
+        printModificationTraversal(arr);
     }
 }
