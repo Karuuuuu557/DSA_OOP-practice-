@@ -1,50 +1,62 @@
-import java.util.Scanner;
+import java.util.Scanner; // Import Scanner so we can read input from the user via the keyboard/console.
 
 public class ArraysOutputs {
+
+    // ===== CLASS-LEVEL (STATIC) VARIABLES =====
+    // These are declared outside any method, at the class level, using "static".
+    // That means all methods in this class share the SAME copy of these variables,
+    // so one method can fill 'arr' with data and another method can use that same 'arr'
+    // without needing to pass it around manually every time.
 
     // This is the array that will store all values entered by the user.
     static int[] arr;
 
-    // Stores the value that will be searched in the array.
+    // Stores the value that will be searched in the array (used in the search example).
     static int target;
+
+    // ================= EXAMPLE 1: REVERSE TRAVERSAL =================
 
     // Takes input for the first example: reverse traversal.
     static void getInput1() {
+        // Create a Scanner object to read from the console (System.in = keyboard input).
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter the size of the array for reverse traversal: ");
-        int size = input.nextInt();
+        int size = input.nextInt(); // Read a whole number typed by the user (the array size).
 
         // Create an array with the size the user entered.
+        // Note: this assigns to the class-level 'arr', so it's now available to other methods too.
         arr = new int[size];
 
-        // Fill the array with values from the user.
+        // Fill the array with values from the user, one element at a time.
         for (int i = 0; i < size; i++) {
             System.out.print("Enter element " + (i + 1) + ": ");
-            arr[i] = input.nextInt();
+            arr[i] = input.nextInt(); // Store the typed number into the array at index i.
         }
     }
 
-    // Prints the array from the last index to the first index.
+    // Prints the array from the last index to the first index (i.e., backwards).
     static void printArrayTraversalReverse(int[] arr) {
         System.out.print("Reverse Traversal: ");
 
-        // Start from the last element and move backward.
+        // Start from the last valid index (arr.length - 1) and decrease i until we hit 0.
         for (int i = arr.length - 1; i >= 0; i--) {
 
-            System.out.print(arr[i]);
+            System.out.print(arr[i]); // Print the current element.
 
-            // Add a comma between values, except after the last one.
+            // Add a comma between values, except after the very last one we print (i == 0).
             if (i > 0) {
                 System.out.print(", ");
             }
         }
 
-        System.out.println();
-        System.out.println("Size: " + arr.length + " elements");
+        System.out.println(); // Move to a new line after printing all elements.
+        System.out.println("Size: " + arr.length + " elements"); // Show how many elements were in the array.
     }
 
-    // Takes input for the second example: normal traversal.
+    // ================= EXAMPLE 2: NORMAL TRAVERSAL =================
+
+    // Takes input for the second example: normal (forward) traversal.
     static void getInput2() {
         Scanner input = new Scanner(System.in);
 
@@ -52,25 +64,27 @@ public class ArraysOutputs {
         int size = input.nextInt();
 
         // Create a new array using the user's chosen size.
+        // This REPLACES whatever was in 'arr' before (from getInput1), since we're
+        // pointing 'arr' at a brand-new array object.
         arr = new int[size];
 
-        // Store each value in the array.
+        // Store each value in the array, same pattern as getInput1.
         for (int i = 0; i < size; i++) {
             System.out.print("Enter element " + (i + 1) + ": ");
             arr[i] = input.nextInt();
         }
     }
 
-    // Prints the array from the first index to the last index.
+    // Prints the array from the first index to the last index (in the order entered).
     static void printArrayTraversal(int[] arr) {
         System.out.print("Normal Traversal: ");
 
-        // Start from the first element and move forward.
+        // Start at index 0 and move forward to the end of the array.
         for (int i = 0; i < arr.length; i++) {
 
             System.out.print(arr[i]);
 
-            // Add a comma between values, except after the last one.
+            // Add a comma between values, except after the last element (i == arr.length - 1).
             if (i < arr.length - 1) {
                 System.out.print(", ");
             }
@@ -80,7 +94,9 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
-    // Takes input for the third example: conditional traversal.
+    // ================= EXAMPLE 3: CONDITIONAL TRAVERSAL =================
+
+    // Takes input for the third example: conditional traversal (filtering values).
     static void getInput3() {
         Scanner input = new Scanner(System.in);
 
@@ -97,28 +113,32 @@ public class ArraysOutputs {
         }
     }
 
-    // Prints only the even numbers in the array.
+    // Prints only the even numbers in the array (values that pass a condition).
     static void printConditionalTraversal(int[] arr) {
 
         System.out.print("Conditional Traversal (Even Numbers): ");
 
+        // This flag tracks whether we've found at least one even number so far.
+        // It's used to decide whether to print a leading comma before a new value.
         boolean found = false;
 
-        // Traverse the array and check each value.
+        // Traverse the array and check each value against our condition.
         for (int i = 0; i < arr.length; i++) {
 
-            // Condition: checks if the number is even.
+            // Condition: checks if the number is even (no remainder when divided by 2).
             if (arr[i] % 2 == 0) {
 
+                // If we already printed an even number before this one, add a comma first.
                 if (found) {
                     System.out.print(", ");
                 }
 
                 System.out.print(arr[i]);
-                found = true;
+                found = true; // Mark that we've now found at least one even number.
             }
         }
 
+        // If we never found any even numbers, let the user know instead of printing nothing.
         if (!found) {
             System.out.print("No even numbers found.");
         }
@@ -126,6 +146,8 @@ public class ArraysOutputs {
         System.out.println();
         System.out.println("Size: " + arr.length + " elements");
     }
+
+    // ================= EXAMPLE 4: SEARCH TRAVERSAL =================
 
     // Takes input for the fourth example: search traversal.
     static void getInput4() {
@@ -143,35 +165,39 @@ public class ArraysOutputs {
             arr[i] = input.nextInt();
         }
 
-        // Get the value to search.
+        // Get the value the user wants to search for, and store it in the
+        // class-level 'target' variable so printSearchTraversal() can use it.
         System.out.print("Enter the value to search: ");
         target = input.nextInt();
     }
 
-    // Searches for a specific value in the array.
+    // Searches for a specific value (target) in the array using a linear search.
     static void printSearchTraversal(int[] arr) {
 
+        // Tracks whether we found the target value while looping.
         boolean found = false;
 
-        // Traverse the array from first index to last index.
+        // Traverse the array from first index to last index, checking each element.
         for (int i = 0; i < arr.length; i++) {
 
-            // Check if the current element matches the target.
+            // Check if the current element matches the target value.
             if (arr[i] == target) {
 
                 System.out.println("Value " + target + " found at index " + i + ".");
                 found = true;
-                break;
+                break; // Stop looping immediately — no need to keep searching once found.
             }
         }
 
-        // Display message if the value does not exist.
+        // Display a message if the loop finished without finding the value.
         if (!found) {
             System.out.println("Value " + target + " was not found in the array.");
         }
 
         System.out.println("Size: " + arr.length + " elements");
     }
+
+    // ================= EXAMPLE 5: MODIFICATION TRAVERSAL =================
 
     // Takes input for the fifth example: modification traversal.
     static void getInput5() {
@@ -189,9 +215,16 @@ public class ArraysOutputs {
             arr[i] = input.nextInt();
         }
 
-        // Close the Scanner since this is the last input needed for this example.
+        // Close the Scanner to release the input resource since we're done reading
+        // keyboard input in this method. (Note: getInput6() below opens its own new
+        // Scanner afterward, which still works fine since it's a separate object —
+        // but closing System.in-based Scanners mid-program is something to be
+        // mindful of, since it's generally cleaner to close resources once at the
+        // very end of a program rather than in the middle.)
         input.close();
     }
+
+    // ================= EXAMPLE 6: SUMMATION/AVERAGE TRAVERSAL =================
 
     // Takes input for the sixth example: summation/average traversal.
     static void getInput6() {
@@ -210,19 +243,21 @@ public class ArraysOutputs {
         }
     }
 
-    // Modifies each element in the array by multiplying it by 2.
+    // Modifies each element in the array by multiplying it by 2, then prints the result.
     static void printModificationTraversal(int[] arr) {
 
         System.out.print("Modified Array: ");
 
-        // Traverse the array and modify each element.
+        // Traverse the array and modify each element as we go.
         for (int i = 0; i < arr.length; i++) {
 
-            // Multiply the current element by 2 and store it back in the array
-            // (this changes the original array, not just what gets printed).
+            // Multiply the current element by 2 and store the result back into the
+            // SAME array (arr[i] = ...). This is different from the other print
+            // methods above — this one actually changes the original data, it
+            // doesn't just read and display it.
             arr[i] = arr[i] * 2;
 
-            // Print the newly modified value.
+            // Print the newly modified value (not the original one).
             System.out.print(arr[i]);
 
             // Add a comma between values, except after the last one.
@@ -238,15 +273,18 @@ public class ArraysOutputs {
     // Calculates the sum and average of the array elements.
     static void printSummationAverageTraversal(int[] arr) {
 
-        int sum = 0;
-        double average;
+        int sum = 0;        // Will accumulate the total of all elements.
+        double average;     // Declared as double so it can hold decimal values (e.g. 2.5).
 
-        // Traverse the array and calculate the sum.
+        // Traverse the array and add each element to the running total.
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+            sum += arr[i]; // Same as: sum = sum + arr[i];
         }
 
-        // Calculate the average.
+        // Calculate the average by dividing the sum by the number of elements.
+        // "(double) sum" converts sum to a double BEFORE dividing, so we get a
+        // proper decimal result instead of integer division (which would cut off
+        // any decimal places, e.g. 7 / 2 would give 3 instead of 3.5).
         average = (double) sum / arr.length;
 
         System.out.println("Summation/Average Traversal");
@@ -255,6 +293,10 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
+    // ================= MAIN METHOD =================
+    // This is the entry point of the program — where execution starts.
+    // It runs through all six examples in order, each time collecting input
+    // and then processing/printing that input in a different way.
     public static void main(String[] args) {
 
         // First example: collect input and print the array in reverse order.
@@ -274,14 +316,14 @@ public class ArraysOutputs {
         printSearchTraversal(arr);
 
         // Fifth example: modification traversal.
-        // getInput5() asks for an array size, fills the array with user input,
-        // then closes the Scanner since no more input is taken after this point
-        // in this particular flow.
+        // getInput5() reads in the array size and its elements from the user,
+        // then closes the Scanner since input-reading is done at this point
+        // in the flow.
         getInput5();
 
-        // printModificationTraversal(arr) multiplies each element in the array
-        // by 2 (modifying the original array, not just printing it), then
-        // prints the updated values and the array's size.
+        // printModificationTraversal(arr) doubles every value in the array
+        // (modifying the actual array, not just displaying it), then prints
+        // the updated values and the array's size.
         printModificationTraversal(arr);
 
         // Sixth example: collect input and calculate the sum and average.
