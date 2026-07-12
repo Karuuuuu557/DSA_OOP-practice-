@@ -4,6 +4,27 @@
 
 ---
 
+## 📑 Table of Contents
+
+**Part A — Getting Started**
+- [Step 1: What a Java Program Always Needs](#-step-1-understand-what-a-java-program-always-needs)
+- [Step 2: The 5 Things You'll Use 90% of the Time](#-step-2-the-5-things-youll-use-90-of-the-time)
+- [Step 3: How to Write a Program (The Thinking Process)](#-step-3-how-to-write-a-program-the-thinking-process)
+- [Step 3.5: Building Programming Logic](#-step-35-building-programming-logic-how-to-think-like-a-programmer)
+- [Step 4: How to Run Java in VS Code](#-step-4-how-to-run-java-in-vs-code)
+- [Step 5: Common Mistakes Beginners Make](#-step-5-common-mistakes-beginners-make)
+- [Step 6: Your First Assignment](#-step-6-your-first-assignment)
+
+**Part B — The Complete Roadmap**
+- [0–2: Setup & Fundamentals](#0-what-java-is)
+- [3: OOP Core](#3-oop-core-intermediate-entry)
+- [4–9: Collections, Exceptions, File I/O, Generics, Streams, Date/Time](#4-collections-framework)
+- [10–12: Concurrency, Networking, JDBC](#10-multithreading-and-concurrency-pro-foundation)
+- [13–17: Modern Language Features, Testing, Build Tools, Pro Topics, Mistakes](#13-important-java-language-features-to-know)
+- [18–21: DSA Prep, Learning Path, Practice Projects, Final Notes](#18-dsa--interview-ready-java)
+
+---
+
 ## 📌 Step 1: Understand What a Java Program ALWAYS Needs
 
 Every Java program has this skeleton. **Memorize this** — it's your starting point every time:
@@ -165,6 +186,118 @@ System.out.println("The largest number is: " + largest);
 
 ---
 
+## 📌 Step 3.5: Building Programming Logic (How to Think Like a Programmer)
+
+Knowing Java's syntax (`if`, `for`, `int`) is not the same skill as knowing HOW to
+turn a problem into steps. That second skill — **programming logic** — is what
+actually gets harder as problems get harder, and it's rarely taught explicitly.
+Here's how to build it deliberately.
+
+### 1. The IPO Method — break every problem into 3 boxes
+
+Before writing any code, answer these three questions on paper or in comments:
+
+| Box | Question | Example: "Find the average of 5 grades" |
+|-----|----------|-------------------------------------------|
+| **I**nput | What do I already have, or need to ask for? | 5 grades from the user |
+| **P**rocess | What has to happen to turn Input into Output? | Add them up, divide by 5 |
+| **O**utput | What do I need to show/return at the end? | The average, printed to the screen |
+
+If you can't fill in these three boxes, you're not ready to write code yet —
+go back and understand the problem first. This single habit prevents most of
+the "I don't know where to start" freeze-ups.
+
+### 2. Write PSEUDOCODE before real code
+
+Pseudocode is writing your logic in plain English/Filipino, structured like
+code, but without worrying about Java syntax. It lets you debug your THINKING
+before you debug your SYNTAX — two different skills, easier to do one at a time.
+
+```
+START
+  ask user for 3 numbers
+  assume the first number is the largest
+  IF second number is bigger than current largest
+      update largest
+  IF third number is bigger than current largest
+      update largest
+  print largest
+END
+```
+
+Only after this makes sense do you translate it line-by-line into Java. This
+is exactly what Step 3's "Add logic" phase already showed you — pseudocode is
+just making that thinking step explicit and repeatable for HARDER problems too.
+
+### 3. Trace your code by hand (a.k.a. "dry running")
+
+Before you even compile, pretend you ARE the computer. Take a small example
+input and walk through your own code line by line, writing down what every
+variable holds after each line. Use a simple table:
+
+```
+Input: num1 = 7, num2 = 3, num3 = 9
+
+Line                          | largest
+-------------------------------|--------
+largest = num1;                | 7
+if (num2 > largest) ...        | 7   (3 > 7 is false, no change)
+if (num3 > largest) largest=n3 | 9   (9 > 7 is true, updated)
+```
+
+If your hand-traced result matches what the problem expects, your LOGIC is
+correct — any remaining bugs are just syntax. If it doesn't match, you found
+a logic error before ever running the program, which is much faster to fix
+than staring at wrong output wondering why.
+
+### 4. Recognize the recurring "logic patterns"
+
+Most beginner problems are built from a small set of reusable patterns.
+Once you recognize which pattern fits, half the thinking is already done:
+
+| Pattern | Used for | Looks like |
+|---------|----------|------------|
+| **Accumulator** | Totals, sums, averages | `total = total + value;` inside a loop |
+| **Counter** | Counting how many meet a condition | `count++;` inside an `if` inside a loop |
+| **Flag (boolean)** | "Did something happen at all?" | `boolean found = false;` set to `true` when it does |
+| **Max/Min tracker** | Largest/smallest value | Assume the first is the answer, then compare and update |
+| **Swap** | Exchanging two values | Needs a temporary variable: `temp = a; a = b; b = temp;` |
+| **Sentinel/loop guard** | Repeat "until" something specific happens | `while (!done)` or `while (input != -1)` |
+
+You've already used three of these without necessarily naming them — the
+`found` flag in `printConditionalTraversal`, the `sum` accumulator in
+`printSummationAverageTraversal`, and the max-tracker idea in `printSearchTraversal`'s
+`largest` example above. Naming the pattern makes it easier to spot in a NEW
+problem you haven't seen before.
+
+### 5. When stuck, shrink the problem
+
+If a problem feels too big, don't stare at it — make it smaller until you
+CAN solve it, then build back up:
+
+- Can't solve it for "any array"? Solve it for an array of exactly 3 elements first.
+- Can't solve the general case? Solve one specific example by hand, THEN
+  generalize your hand-solution into code.
+- Too many steps at once? Solve step 1 alone, print the result, confirm it's
+  right, THEN add step 2.
+
+### 6. A simple way to think about *why* one solution is "better" than another
+
+You don't need Big-O notation yet, but you can start noticing:
+- **Does my solution redo work it's already done?** (e.g. searching the whole
+  array again every loop instead of remembering what you found)
+- **Does my solution use more variables/loops than it needs to?** Fewer moving
+  parts usually means fewer bugs.
+- **Would this still work if the input were 10x bigger?** If a solution only
+  "works" because the test input is tiny, it's not really solved yet.
+
+This mindset is the seed of complexity analysis, which is covered formally
+later in your `DSA_Practice` track — but the instinct to ask these questions
+should start now, on simple problems, so it's already a habit by the time the
+problems get harder.
+
+---
+
 ## 📌 Step 4: How to Run Java in VS Code
 
 ### One-time setup
@@ -222,6 +355,17 @@ Open **`StarterExercises.java`** (in the same folder as this file) and try to co
 ---
 
 _You got this. Start small, break things, fix them, repeat. That's how everyone learns._
+
+---
+---
+
+# Part B: The Complete Roadmap
+
+> [!NOTE]
+> Part A (above) gets you writing your first working programs. Everything below
+> is the longer road map for AFTER that — come back to this part once Part A
+> and your `StarterExercises.java` feel comfortable, not before. Trying to
+> absorb both parts at once will slow you down more than it helps.
 
 ## Java Complete Learning Guide (Beginner → Intermediate → Pro)
 
@@ -806,3 +950,15 @@ System.out.println(pq.poll()); // 1
 - Java is huge; this guide covers the full core landscape you should know from beginner to pro.
 
 Keep this file open while practicing and implement every example yourself.
+
+---
+
+## 🔗 Where to Practice What You Learn Here
+
+Once you're comfortable with a topic from this guide, go build it out hands-on:
+
+- **Section 18 (DSA + Interview-Ready Java)** → practice in [`DSA_Practice/`](./README.md) (this folder)
+- **Section 3 (OOP Core)** and beyond → practice in [`OOP_Practice/`](../OOP_Practice/README.md)
+
+Both tracks follow the same "concept → demo → practice problems" format this
+guide uses, so the transition should feel familiar.
