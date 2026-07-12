@@ -14,6 +14,9 @@ public class ArraysOutputs {
     // Stores the value that will be searched in the array (used in the search example).
     static int target;
 
+    // Stores how many positions to jump forward each time (used in the step/skip example).
+    static int step;
+
     // ================= EXAMPLE 1: REVERSE TRAVERSAL =================
 
     // Takes input for the first example: reverse traversal.
@@ -293,9 +296,83 @@ public class ArraysOutputs {
         System.out.println("Size: " + arr.length + " elements");
     }
 
+    // ================= EXAMPLE 7: STEP/SKIP TRAVERSAL =================
+
+    // Takes input for the seventh example: step/skip traversal.
+    static void getInput7() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("\nEnter the size of the array for step/skip traversal: ");
+        int size = input.nextInt();
+
+        // Create a new array using the user's chosen size.
+        arr = new int[size];
+
+        // Store each value in the array.
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
+        }
+
+        // Ask the user how many elements to skip on each step (the "step size").
+        // A step size of 2 means "visit every other element", 3 means "visit every
+        // third element", and so on. A step size of 1 would just be a normal traversal.
+        System.out.print("Enter the step size (how many elements to skip each time): ");
+        step = input.nextInt();
+    }
+
+    // Prints only every Nth element of the array, where N is the step size.
+    // Unlike printConditionalTraversal (which filters based on a VALUE check like
+    // "is it even?"), this filters based on POSITION — it doesn't care what the
+    // value is, only whether its index lines up with the step.
+    static void printStepTraversal(int[] arr) {
+
+        System.out.print("Step/Skip Traversal (every " + step + getOrdinalSuffix(step) + " element): ");
+
+        // Guard against a step size of 0 or less, which would either freeze the
+        // loop (0) or cause it to never move forward correctly (negative).
+        if (step <= 0) {
+            System.out.println("Invalid step size. Step must be 1 or greater.");
+            return;
+        }
+
+        // This flag works the same way as in printConditionalTraversal: it tracks
+        // whether we've already printed something, so we know when to print a
+        // leading comma before the next value.
+        boolean found = false;
+
+        // The key difference from a normal traversal: instead of "i++" (move forward
+        // by 1 every time), we use "i += step" so the loop jumps forward by however
+        // many positions the user chose. For example, with step = 2, i goes 0, 2, 4, 6...
+        // which means arr[1], arr[3], arr[5]... are skipped over entirely.
+        for (int i = 0; i < arr.length; i += step) {
+
+            if (found) {
+                System.out.print(", ");
+            }
+
+            System.out.print(arr[i]);
+            found = true;
+        }
+
+        System.out.println();
+        System.out.println("Size: " + arr.length + " elements");
+    }
+
+    // Small helper method just for nicer output (e.g. "every 2nd element" instead
+    // of "every 2 element"). This isn't required for the traversal logic itself —
+    // it's purely cosmetic, so feel free to remove it if your assignment only
+    // wants the core traversal pattern.
+    static String getOrdinalSuffix(int number) {
+        if (number % 10 == 1 && number % 100 != 11) return "st";
+        if (number % 10 == 2 && number % 100 != 12) return "nd";
+        if (number % 10 == 3 && number % 100 != 13) return "rd";
+        return "th";
+    }
+
     // ================= MAIN METHOD =================
     // This is the entry point of the program — where execution starts.
-    // It runs through all six examples in order, each time collecting input
+    // It runs through all seven examples in order, each time collecting input
     // and then processing/printing that input in a different way.
     public static void main(String[] args) {
 
@@ -329,5 +406,10 @@ public class ArraysOutputs {
         // Sixth example: collect input and calculate the sum and average.
         getInput6();
         printSummationAverageTraversal(arr);
+
+        // Seventh example: collect input (including a step size) and print
+        // only every Nth element of the array.
+        getInput7();
+        printStepTraversal(arr);
     }
 }
