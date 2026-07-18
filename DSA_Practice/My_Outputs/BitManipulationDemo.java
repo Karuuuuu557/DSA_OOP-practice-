@@ -1,9 +1,9 @@
 public class BitManipulationDemo {
     public static void main(String[] args) {
-        int num = 10; // binary: 1010
+        int num = 5; // binary: 101
 
         // Check if the 2nd bit is on (0-based from right)
-        int mask = 1 << 1; // binary: 0010
+        int mask = 1 << 2; // binary: 0100
         if ((num & mask) != 0) {
             System.out.println("Bit is ON");
         } else {
@@ -11,7 +11,7 @@ public class BitManipulationDemo {
         }
 
         // Turn on the 0th bit
-        num = num | (1 << 0); // 1010 -> 1011
+        num = num | (1 << 0); // 101 -> 1011
         System.out.println(num);
 
         // Turn off the 3rd bit

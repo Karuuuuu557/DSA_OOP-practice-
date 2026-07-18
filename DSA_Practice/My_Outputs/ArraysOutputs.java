@@ -173,7 +173,7 @@ public class ArraysOutputs {
     // the item or reach the end of the array.
     static void printSearchTraversal(int[] arr) {
         boolean found = false;
-
+         
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == target) {
                 System.out.println("Value " + target + " found at index " + i + ".");
@@ -205,11 +205,6 @@ public class ArraysOutputs {
             System.out.print("Enter element " + (i + 1) + ": ");
             arr[i] = input.nextInt();
         }
-
-        // Close the Scanner to release the resource. In this particular program,
-        // using separate Scanner objects is okay, but in general it is often better
-        // to create one Scanner and reuse it across methods.
-        input.close();
     }
 
     // ================= EXAMPLE 6: SUMMATION/AVERAGE TRAVERSAL =================
