@@ -80,7 +80,7 @@ public class ArraysOutputs {
         arr = new int[size];
 
         for (int i = 0; i < size; i++) {
-            System.out.print("Enter element " + (i + 1) + ": ");
+            System.out.print("Enter element " + (i + 1) + ": "); //this gets the i which starts at 0 then add 1 to be user friendly
             arr[i] = input.nextInt();
         }
     }
