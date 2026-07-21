@@ -128,10 +128,10 @@ public class ArraysOutputs {
 
         boolean found = false;
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) { //this goes through all the array elements and checks if they are even or not
             // An integer is even when the remainder of dividing by 2 is zero.
-            if (arr[i] % 2 == 0) {
-                if (found) {
+            if (arr[i] % 2 == 0) { //if the value of the array at index i is even, then print it
+                if (found) { //we set the default bollean value to false, so when we find the number that is even, we change it to true.
                     System.out.print(", ");
                 }
 
