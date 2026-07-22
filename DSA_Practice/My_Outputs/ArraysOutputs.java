@@ -140,7 +140,7 @@ public class ArraysOutputs {
             }
         }
 
-        if (!found) {
+        if (!found) { //if nothing is found, this prints a message to the user that no even numbers were found in the array.
             System.out.print("No even numbers found.");
         }
 
@@ -176,8 +176,8 @@ public class ArraysOutputs {
         boolean found = false;
          
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                System.out.println("Value " + target + " found at index " + i + ".");
+            if (arr[i] == target) { //if the value of the index at current i is equal to the target value, then print the index of the value and set found to true
+                System.out.println("Value " + target + " found at index " + i + ".");//prints the index of the value that was found in the array
                 found = true;
                 break; // Stop right away once the value is found.
             }
