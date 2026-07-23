@@ -259,9 +259,9 @@ public class ArraysOutputs {
         int sum = 0;        // Will accumulate the total of all elements.
         double average;     // Declared as double so it can hold decimal values (e.g. 2.5).
 
-        // Traverse the array and add each element to the running total.
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i]; // Same as: sum = sum + arr[i];
+        // Traverse all of the array elements and add them to the sum. This is a standard pattern for summing values in an array.
+        for (int i = 0; i < arr.length; i++) { 
+            sum += arr[i]; // sum = sum + arr[i], arr i is the current index of the array, and arr[i] is the value at that index. This adds the value to the sum.       
         }
 
         // Calculate the average by dividing the sum by the number of elements.
