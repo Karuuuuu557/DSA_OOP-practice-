@@ -350,6 +350,36 @@ public class ArraysOutputs {
         return "th";
     }
 
+    static void getInput8() {
+         try (Scanner input = new Scanner(System.in)) {
+            System.out.print("Enter size of array for deletion: ");
+             int size = input.nextInt();
+
+                arr = new int[size];
+
+                for (int i = 0; i < size; i++) {
+                    System.out.print("Enter element " + (i + 1) + ": ");
+                    arr[i] = input.nextInt();
+                }
+                input.close();
+         }
+    }
+
+    static void printDeletionTraversal(int[] arr) {
+        System.out.print("Deletion Traversal: ");
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println();
+        System.out.println("Size: " + arr.length + " elements");
+    }
+
     // ================= MAIN METHOD =================
     // This is the entry point of the program — where execution starts.
     // It runs through all seven examples in order, each time collecting input
@@ -389,5 +419,8 @@ public class ArraysOutputs {
         // only every Nth element of the array.
         getInput7();
         printStepTraversal(arr);
+
+        getInput8();
+        printDeletionTraversal(arr);
     }
 }
