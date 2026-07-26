@@ -41,6 +41,6 @@ static void getInput() {
 
     public static void main(String[] args) {
         getInput();
-        printDeletionTraversal(arr);
+        deleteAtPosition(arr, 2); // Example: delete element at position 2
     }
 }
