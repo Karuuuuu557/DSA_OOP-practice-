@@ -2,18 +2,21 @@ import java.util.Scanner;
 
 public class testing {
     static int[] arr;
+    static int position;
 
 static void getInput() {
          try (Scanner input = new Scanner(System.in)) {
-            System.out.print("Enter size of array for deletion: ");
+            System.out.println("Enter size of array for deletion: ");
              int size = input.nextInt();
 
-            arr = new int[size];
+             arr = new int[size];
 
             for (int i = 0; i < size; i++) {
                 System.out.print("Enter element " + (i + 1) + ": ");
                 arr[i] = input.nextInt();
             }
+             System.out.println("Enter element to delete from the array: ");
+             position = input.nextInt();
         }
             // try-with-resources will auto-close the scanner
     }
@@ -41,6 +44,6 @@ static void getInput() {
 
     public static void main(String[] args) {
         getInput();
-        deleteAtPosition(arr, 2); // Example: delete element at position 2
+        deleteAtPosition(arr, position); // Example: delete element at position 2
     }
 }
