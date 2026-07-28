@@ -350,35 +350,63 @@ public class ArraysOutputs {
         return "th";
     }
 
-    static void getInput8() {
-         try (Scanner input = new Scanner(System.in)) {
-            System.out.print("Enter size of array for deletion: ");
-             int size = input.nextInt();
+static int[]getInput8() {
+    Scanner input = new Scanner(System.in);
+         
+         System.out.print("Enter the size of the array for deletion: ");
+         int size = input.nextInt();
 
-                arr = new int[size];
+         int[] arr = new int[size];
 
-                for (int i = 0; i < size; i++) {
-                    System.out.print("Enter element " + (i + 1) + ": ");
-                    arr[i] = input.nextInt();
-                }
-                input.close();
+         for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
          }
+
+          return arr;
+        }
+static int getPosition(int arraySize) {
+        
+    Scanner input = new Scanner(System.in);
+        System.out.print("Enter the position to delete: ");
+        int  elementNumber = input.nextInt();
+
+        if (elementNumber < 1 || elementNumber > arraySize) {
+            return -1;
+        }
+        return elementNumber - 1;
     }
+    
+ static int[] deleteAtPosition(int[] arr, int position) {
 
-    static void printDeletionTraversal(int[] arr) {
-        System.out.print("Deletion Traversal: ");
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-
-            if (i < arr.length - 1) {
-                System.out.print(", ");
-            }
+        if (position < 0 || position >= arr.length) {
+            System.out.println("Invalid position!");
+            return arr;
         }
 
-        System.out.println();
-        System.out.println("Size: " + arr.length + " elements");
+        int deletedElement = arr[position];
+
+        // Create a new array with size - 1
+        int[] newArr = new int[arr.length - 1];
+
+        // Copy elements, skipping the deleted one
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (i == position) continue; // Skip the deleted element
+            newArr[j++] = arr[i];
+        }
+
+        System.out.println("Deleted " + deletedElement + " from element " + (position + 1)  + ".");
+        return newArr;
     }
+  
+static void displayArray(int[] arr) {
+    System.out.println("Array after deletion:");
+
+    for(int value : arr) {
+        System.err.println(value + " ");
+    }
+    
+}
 
     // ================= MAIN METHOD =================
     // This is the entry point of the program — where execution starts.
@@ -420,7 +448,11 @@ public class ArraysOutputs {
         getInput7();
         printStepTraversal(arr);
 
-        getInput8();
-        printDeletionTraversal(arr);
+
+    int[] arr = getInput8();
+       int position = getPosition(arr.length);  
+       arr = deleteAtPosition(arr, position);
+       displayArray(arr);
+        
     }
 }

@@ -1,12 +1,10 @@
 import java.util.Scanner;
 public class testing {
 
-    static int[] arr;
-    static int position;
+static Scanner input = new Scanner(System.in);
 
 static int[]getInput() {
-         Scanner input = new Scanner(System.in);
-
+         
          System.out.print("Enter the size of the array for deletion: ");
          int size = input.nextInt();
 
@@ -19,18 +17,18 @@ static int[]getInput() {
 
           return arr;
         }
-static int getPosition() {
-        Scanner input = new Scanner(System.in);
+static int getPosition(int arraySize) {
+        
+        System.out.print("Enter the position to delete: ");
+        int  elementNumber = input.nextInt();
 
-        System.out.print("Enter the position to delete (0-indexed): ");
-        int elementNumber = input.nextInt();
-        if (elementNumber < 1 || elementNumber > arr.length) {
+        if (elementNumber < 1 || elementNumber > arraySize) {
             return -1;
         }
         return elementNumber - 1;
     }
     
- static int[] deleteAtPosition(int[] arr, int position, int elementNumber) {
+ static int[] deleteAtPosition(int[] arr, int position) {
 
         if (position < 0 || position >= arr.length) {
             System.out.println("Invalid position!");
@@ -64,9 +62,9 @@ static void displayArray(int[] arr) {
     public static void main(String[] args) {
        int[] arr = getInput();
 
-       int position = getPosition();  
+       int position = getPosition(arr.length);  
        
-       deleteAtPosition(int [] arr, int position, int elementNumber);
+       arr = deleteAtPosition(arr, position);
 
        displayArray(arr);
 
