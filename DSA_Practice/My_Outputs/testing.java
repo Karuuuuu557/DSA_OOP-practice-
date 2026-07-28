@@ -1,26 +1,37 @@
 import java.util.Scanner;
-
 public class testing {
+
     static int[] arr;
     static int position;
 
-static void getInput() {
-         try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Enter size of array for deletion: ");
-             int size = input.nextInt();
+static int[]getInput() {
+         Scanner input = new Scanner(System.in);
 
-             arr = new int[size];
+         System.out.print("Enter the size of the array for deletion: ");
+         int size = input.nextInt();
 
-            for (int i = 0; i < size; i++) {
-                System.out.print("Enter element " + (i + 1) + ": ");
-                arr[i] = input.nextInt();
-            }
-             System.out.println("Enter element to delete from the array: ");
-             position = input.nextInt();
+         int[] arr = new int[size];
+
+         for (int i = 0; i < size; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            arr[i] = input.nextInt();
+         }
+
+          return arr;
         }
-            // try-with-resources will auto-close the scanner
+static int getPosition() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the position to delete (0-indexed): ");
+        int elementNumber = input.nextInt();
+        if (elementNumber < 1 || elementNumber > arr.length) {
+            return -1;
+        }
+        return elementNumber - 1;
     }
- static int[] deleteAtPosition(int[] arr, int position) {
+    
+ static int[] deleteAtPosition(int[] arr, int position, int elementNumber) {
+
         if (position < 0 || position >= arr.length) {
             System.out.println("Invalid position!");
             return arr;
@@ -37,13 +48,27 @@ static void getInput() {
             newArr[j++] = arr[i];
         }
 
-        System.out.println("Deleted " + deletedElement + " from position " + position);
+        System.out.println("Deleted " + deletedElement + " from element " + (position + 1)  + ".");
         return newArr;
     }
   
+static void displayArray(int[] arr) {
+    System.out.println("Array after deletion:");
+
+    for(int value : arr) {
+        System.err.println(value + " ");
+    }
+    
+}
 
     public static void main(String[] args) {
-        getInput();
-        deleteAtPosition(arr, position); // Example: delete element at position 2
+       int[] arr = getInput();
+
+       int position = getPosition();  
+       
+       deleteAtPosition(int [] arr, int position, int elementNumber);
+
+       displayArray(arr);
+
     }
 }
