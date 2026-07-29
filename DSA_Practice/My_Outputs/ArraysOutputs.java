@@ -369,9 +369,9 @@ static int getPosition(int arraySize) {
         
     Scanner input = new Scanner(System.in);
         System.out.print("Enter the position to delete: ");
-        int  elementNumber = input.nextInt();
+        int  elementNumber = input.nextInt(); //assign the element to delete at elementNumber
 
-        if (elementNumber < 1 || elementNumber > arraySize) {
+        if (elementNumber < 1 || elementNumber > arraySize) { //if the element number is < 1 or elementNumber is greater than arraySize return -1
             return -1;
         }
         return elementNumber - 1;
