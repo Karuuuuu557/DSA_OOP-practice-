@@ -374,12 +374,12 @@ static int getPosition(int arraySize) {
         if (elementNumber < 1 || elementNumber > arraySize) { //if the element number is < 1 or elementNumber is greater than arraySize return -1
             return -1;
         }
-        return elementNumber - 1;
+        return elementNumber - 1; //else return elemenetNumber - 1
     }
     
  static int[] deleteAtPosition(int[] arr, int position) {
 
-        if (position < 0 || position >= arr.length) {
+        if (position < 0 || position >= arr.length) { 
             System.out.println("Invalid position!");
             return arr;
         }
