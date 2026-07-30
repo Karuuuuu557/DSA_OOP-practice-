@@ -379,12 +379,12 @@ static int getPosition(int arraySize) {
     
  static int[] deleteAtPosition(int[] arr, int position) {
 
-        if (position < 0 || position >= arr.length) { 
+        if (position < 0 || position >= arr.length) {  //this block of code is for verifiying the input if its valid or not
             System.out.println("Invalid position!");
             return arr;
         }
 
-        int deletedElement = arr[position];
+        int deletedElement = arr[position]; 
 
         // Create a new array with size - 1
         int[] newArr = new int[arr.length - 1];
