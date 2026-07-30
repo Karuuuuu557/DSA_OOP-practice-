@@ -391,7 +391,7 @@ static int getPosition(int arraySize) {
 
         // Copy elements, skipping the deleted one
         for (int i = 0, j = 0; i < arr.length; i++) {
-            if (i == position) continue; // Skip the deleted element
+            if (i == position) continue; // if the value of the index is equal to the value of position which is the deleted array, skip the next part and continue the rest
             newArr[j++] = arr[i];
         }
 
