@@ -390,7 +390,7 @@ static int getPosition(int arraySize) {
         int[] newArr = new int[arr.length - 1];
 
         // Copy elements, skipping the deleted one
-        for (int i = 0, j = 0; i < arr.length; i++) {
+        for (int i = 0, j = 0; i < arr.length; i++) { //traverse all the array to find the deleted array index
             if (i == position) continue; // if the value of the index is equal to the value of position which is the deleted array, skip the next part and continue the rest
             newArr[j++] = arr[i]; //set the new array to array at index i, then increment j++ until the said deleted array index is found
         }
