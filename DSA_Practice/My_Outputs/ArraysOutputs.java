@@ -377,14 +377,14 @@ static int getPosition(int arraySize) {
         return elementNumber - 1; //else return elemenetNumber - 1
     }
     
- static int[] deleteAtPosition(int[] arr, int position) {
+ static int[] deleteAtPosition(int[] arr, int position) { // int[] arr is the array that was created in getInput8() and position is the index of the array that the user wants to delete
 
         if (position < 0 || position >= arr.length) {  //this block of code is for verifiying the input if its valid or not
             System.out.println("Invalid position!");
             return arr;
         }
 
-        int deletedElement = arr[position]; 
+        int deletedElement = arr[position];  //assign the value of the array at index position to deletedElement, so that we can print it to the console after deleting it
 
         // Create a new array with size - 1
         int[] newArr = new int[arr.length - 1];
