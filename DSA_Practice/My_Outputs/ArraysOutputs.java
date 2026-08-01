@@ -402,7 +402,7 @@ static int getPosition(int arraySize) {
 static void displayArray(int[] arr) {
     System.out.println("Array after deletion:");
 
-    for(int value : arr) {
+    for(int value : arr) { //this is a for loop that gets the value of the array at each index that was left after deleting the array index, and prints it to the console
         System.err.println(value + " ");
     }
     
