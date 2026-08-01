@@ -399,7 +399,7 @@ static int getPosition(int arraySize) {
         return newArr;
     }
   
-static void displayArray(int[] arr) {
+static void displayArray(int[] arr) {// the int[] arr is the new array that was created after deleting the array index, and this method displays the new array to the console
     System.out.println("Array after deletion:");
 
     for(int value : arr) { //this is a for loop that gets the value of the array at each index that was left after deleting the array index, and prints it to the console
