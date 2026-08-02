@@ -395,8 +395,8 @@ static int getPosition(int arraySize) {
             newArr[j++] = arr[i]; //set the new array to array at index i, then increment j++ until the said deleted array index is found
         }
 
-        System.out.println("Deleted " + deletedElement + " from element " + (position + 1)  + ".");
-        return newArr;
+        System.out.println("Deleted " + deletedElement + " from element " + (position + 1)  + "."); //print the value of the deleted array index to the console, and print the position of the deleted array index to the console, which is position + 1 because the user entered a number that is 1 greater than the actual index of the array
+        return newArr; //return the new array that was created after deleting the array index
     }
   
 static void displayArray(int[] arr) {// the int[] arr is the new array that was created after deleting the array index, and this method displays the new array to the console
