@@ -22,5 +22,16 @@ public class learningArray {
         }
         System.out.println("");
         System.out.println("Largest element in the array: " + largest);
+        
+
+        int[] arr3 = {35, 12, 89, 4, 27};
+        int smallest = arr3[0];
+
+        for (int i = 1; i < arr3.length; i++) {
+            if (arr3[i] < smallest) {
+                smallest = arr3[i];
+            }
+        }
+        System.out.println("Smallest element in the array: " + smallest);
     }
 }
