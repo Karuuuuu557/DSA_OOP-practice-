@@ -33,5 +33,15 @@ public class learningArray {
             }
         }
         System.out.println("Smallest element in the array: " + smallest);
+
+        int[] arr4 = {12, 7, 20, 15, 8, 3, 10};
+        int even = 0;
+
+        for (int i = 0; i < arr4.length; i++) {
+            if (arr4[i] % 2 == 0) {
+                even++;
+            }
+        }
+        System.out.println("Number of even elements in the array: " + even);
     }
 }
