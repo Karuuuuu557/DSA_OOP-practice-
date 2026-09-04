@@ -47,5 +47,24 @@ public class learningArray {
         }
         System.out.println("Number of even elements in the array: " + even);
         System.out.println("Number of odd elements in the array: " + odd);
+
+        int[] arr5 = {10, 20, 30, 40, 50};
+        double average = 0;
+        for (int i = 0; i < arr5.length; i++) {
+            average += arr5[i];
+        }
+        average /= arr5.length;
+        System.out.println("Average of array elements: " + average);
+
+        int[] arr6 = {10, 25, 7, 42, 18};
+        int target = 42;
+
+        for (int i = 0; i < arr6.length; i++) {
+            if (arr6[i] == target) {
+                System.out.println("Element " + target + " found at index: " + i);
+                break;
+            }
+        }
+        
     }
 }
