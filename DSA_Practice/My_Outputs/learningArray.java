@@ -4,25 +4,26 @@ public class learningArray {
         int sum = 0;
 
         for (int i = 0; i < arr1.length; i++) {
-           sum += arr1[i];
+            sum += arr1[i];
         }
+
         for (int i = 0; i < arr1.length; i++) {
             System.out.println(arr1[i]);
         }
+
         System.out.println("Sum of array elements: " + sum);
 
-        int [] arr2 = {10, 25, 7, 42, 18};
+        int[] arr2 = {10, 25, 7, 42, 18};
         int largest = arr2[0];
 
-
-        for (int i = 1; i <arr2.length; i++) {
+        for (int i = 1; i < arr2.length; i++) {
             if (arr2[i] > largest) {
                 largest = arr2[i];
             }
         }
+
         System.out.println("");
         System.out.println("Largest element in the array: " + largest);
-        
 
         int[] arr3 = {35, 12, 89, 4, 27};
         int smallest = arr3[0];
@@ -32,6 +33,7 @@ public class learningArray {
                 smallest = arr3[i];
             }
         }
+
         System.out.println("Smallest element in the array: " + smallest);
 
         int[] arr4 = {12, 7, 20, 15, 8, 3, 10};
@@ -45,14 +47,17 @@ public class learningArray {
                 odd++;
             }
         }
+
         System.out.println("Number of even elements in the array: " + even);
         System.out.println("Number of odd elements in the array: " + odd);
 
         int[] arr5 = {10, 20, 30, 40, 50};
         double average = 0;
+
         for (int i = 0; i < arr5.length; i++) {
             average += arr5[i];
         }
+
         average /= arr5.length;
         System.out.println("Average of array elements: " + average);
 
@@ -65,6 +70,21 @@ public class learningArray {
                 break;
             }
         }
-        
+
+        int[] arr7 = {15, 8, 23, 41, 6};
+        int target2 = 20;
+        boolean found = false;
+
+        for (int i = 0; i < arr7.length; i++) {
+            if (arr7[i] == target2) {
+                found = true;
+                System.out.println("Element " + target2 + " found at index: " + i);
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Element " + target2 + " not found in the array.");
+        }
     }
 }
