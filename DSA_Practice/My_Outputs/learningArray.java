@@ -86,5 +86,18 @@ public class learningArray {
         if (!found) {
             System.out.println("Element " + target2 + " not found in the array.");
         }
+        int [] arr8 = {12, 5, 27, 8, 31, 14, 3};
+        int limit = 10;
+        int count = 0;
+        for (int i = 0; i < arr8.length; i++) {
+            if (arr8[i] > limit) {
+                System.out.println(arr8[i] + " is greater than " + limit);  
+                count++;
+            } else {
+                System.out.println(arr8[i] + " is not greater than " + limit);
+            }
+
+        }
+        System.out.println("Count of elements greater than " + limit + ": " + count);
     }
 }
