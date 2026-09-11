@@ -2,11 +2,11 @@ public class SortingAlgo {
     public static void bubbleSort(int[] arr) {
         int n = arr.length;
 
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < n - 1; i++) { // this part is for the number of passes
             System.out.println("\nPass " + (i + 1));
-            for (int j = 0; j < n - i - 1; j++) {
+            for (int j = 0; j < n - i - 1; j++) { //this part is for the number of comaparisons in each pass
                 System.out.println("Compare: " + arr[j] + " and " + arr[j + 1]);
-                if (arr[j] > arr[j + 1]) {
+                if (arr[j] > arr[j + 1]) { // swap if the element found is greater than the next element
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
