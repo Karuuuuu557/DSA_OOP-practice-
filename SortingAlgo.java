@@ -20,7 +20,7 @@ public class SortingAlgo {
     }
 
     public static void printArray(int[] arr) {
-        for (int value : arr) {
+        for (int value : arr) { //this part is for printing the array after each pass
             System.out.print(value + " ");
         }
         System.out.println();
