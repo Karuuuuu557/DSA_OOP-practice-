@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class SortingAlgo {
     public static void bubbleSort(int[] arr) {
         int n = arr.length;
+        System.out.println("Original array:"); // this part is for printing the original array
+        printArray(arr);
 
         for (int i = 0; i < n - 1; i++) { // this part is for the number of passes
             System.out.println("\nPass " + (i + 1));
@@ -27,7 +31,15 @@ public class SortingAlgo {
     }
 
     public static void main(String[] args) {
-        int[] numbers = {64, 34, 25, 12, 22, 11, 90};
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of elements in the array:");
+        int n = scanner.nextInt();
+        int[] numbers = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
 
         System.out.println("Before sorting:");
         printArray(numbers);
