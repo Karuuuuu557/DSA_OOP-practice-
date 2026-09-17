@@ -43,7 +43,7 @@ public class SortingAlgo {
         int n = scanner.nextInt();
         // Create an integer array with the size entered by the user.
         int[] numbers = new int[n];
-
+        System.out.println(" BUBBLE SORTING ALGORITHM ");
         System.out.println("Enter the elements of the array:");
         // Read exactly n values and store each one at its matching index.
         for (int i = 0; i < n; i++) {
