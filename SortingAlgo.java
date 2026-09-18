@@ -30,7 +30,7 @@ public class SortingAlgo {
 
     public static void printArray(int[] arr) {
         // The enhanced for loop visits each value in the array from left to right.
-        for (int value : arr) {
+        for (int value : arr) { // the : means "in" or "of" in this context.
             System.out.print(value + " ");
         }
         System.out.println();
