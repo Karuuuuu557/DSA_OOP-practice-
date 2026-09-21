@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class LA2_SORTING {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter array size: ");
@@ -32,7 +31,6 @@ public class LA2_SORTING {
             if (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'D') {
                 System.out.println("\nInvalid choice! Please enter A, B, C, or D.");
             }
-
         } while (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'D');
 
         System.out.println();
@@ -42,45 +40,48 @@ public class LA2_SORTING {
 
             case 'A':
                 System.out.println("BUBBLE SORT");
+                System.out.println("Original array:");
                 printArray(arr);
                 bubbleSort(arr);
                 break;
 
             case 'B':
                 System.out.println("SELECTION SORT");
+                System.out.println("Original array:");
                 printArray(arr);
                 selectionSort(arr);
                 break;
 
             case 'C':
                 System.out.println("INSERTION SORT");
+                System.out.println("Original array:");
                 printArray(arr);
                 insertionSort(arr);
                 break;
 
             case 'D':
                 System.out.println("MERGE SORT");
+                System.out.println("Original array:");
                 printArray(arr);
                 mergeSort(arr, 0, arr.length - 1);
                 break;
         }
 
+        System.out.println("\nFinal sorted array:");
+        printArray(arr);
+
         scanner.close();
     }
 
-
     // BUBBLE SORT
-    public static void bubbleSort(int[] arr) {
-
-        int n = arr.length;
+    public static void bubbleSort(int[] arr) {        int n = arr.length;
 
         // Compare neighboring elements and swap if needed
         for (int i = 0; i < n - 1; i++) {
+            System.out.println("\nPass " + (i + 1) + ":");
 
             for (int j = 0; j < n - i - 1; j++) {
-
                 if (arr[j] > arr[j + 1]) {
-
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -91,14 +92,13 @@ public class LA2_SORTING {
         }
     }
 
-
     // SELECTION SORT
     public static void selectionSort(int[] arr) {
-
         int n = arr.length;
 
         // Find the smallest value and place it in the correct position
         for (int i = 0; i < n - 1; i++) {
+            System.out.println("\nStep " + (i + 1) + ":");
 
             int minIdx = i;
 
@@ -125,35 +125,42 @@ public class LA2_SORTING {
 
         // Take one element and insert it into its correct position
         for (int i = 1; i < n; i++) {
+            System.out.println("\nInsert position " + i + ":");
 
             int key = arr[i];
             int j = i - 1;
 
             while (j >= 0 && arr[j] > key) {
-
                 arr[j + 1] = arr[j];
                 j--;
             }
 
             arr[j + 1] = key;
-
             printArray(arr);
         }
     }
 
-
     // MERGE SORT
     public static void mergeSort(int[] arr, int left, int right) {
-
         if (left < right) {
-
             // Divide the array into two smaller parts
             int middle = (left + right) / 2;
+
+            System.out.println("\nSplit into two parts:");
+            System.out.println("Left part:");
+            printRange(arr, left, middle);
+            System.out.println("Right part:");
+            printRange(arr, middle + 1, right);
 
             mergeSort(arr, left, middle);
             mergeSort(arr, middle + 1, right);
 
             // Combine the two sorted parts
+            System.out.println("\nMerge both parts:");
+            System.out.println("Left sorted part:");
+            printRange(arr, left, middle);
+            System.out.println("Right sorted part:");
+            printRange(arr, middle + 1, right);
             merge(arr, left, middle, right);
         }
     }
@@ -161,7 +168,6 @@ public class LA2_SORTING {
 
     // MERGE
     public static void merge(int[] arr, int left, int middle, int right) {
-
         int n1 = middle - left + 1;
         int n2 = right - middle;
 
@@ -182,7 +188,6 @@ public class LA2_SORTING {
 
         // Compare both parts and place the smaller value first
         while (i < n1 && j < n2) {
-
             if (leftArray[i] <= rightArray[j]) {
                 arr[k] = leftArray[i];
                 i++;
@@ -211,6 +216,19 @@ public class LA2_SORTING {
         printArray(arr);
     }
 
+
+    public static void printRange(int[] arr, int start, int end) {
+        if (start > end) {
+            System.out.println("[]");
+            return;
+        }
+
+        for (int i = start; i <= end; i++) {
+            System.out.print(arr[i] + "\t");
+        }
+
+        System.out.println();
+    }
 
     public static void printArray(int[] arr) {
 
