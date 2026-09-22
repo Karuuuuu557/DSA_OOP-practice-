@@ -2,35 +2,29 @@ import java.util.Scanner;
 
 public class SortingAlgo {
     public static void bubbleSort(int[] arr) {
-        // Store the array length so we can use it to control the sorting loops.
         int n = arr.length;
-        System.out.println("Original array:"); // Show the array before bubble sort changes it.
+        System.out.println("Bubble Sort in progress...");
+        System.out.println("Initial array: ");
         printArray(arr);
 
-        // Each pass moves the largest unsorted value to the end of the unsorted section.
-        for (int i = 0; i < n - 1; i++) { // An array of n values needs at most n - 1 passes.
+        for (int i = 0; i < n - 1; i++) {
             System.out.println("\nPass " + (i + 1));
-            // The last i values are already sorted, so they do not need to be compared again.
-            for (int j = 0; j < n - i - 1; j++) { // Compare neighboring values in this pass.
-                System.out.println("Compare: " + arr[j] + " and " + arr[j + 1]);
-                // If the left value is larger, exchange the two values to move the larger value right.
+            for (int j = 0; j < n - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    // A temporary variable prevents the original left value from being lost.
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
-                    System.out.println("Swap -> " + arr[j] + " and " + arr[j + 1]);
-                    System.out.println("Array now: ");
-                    printArray(arr);
-                    System.out.println();
                 }
             }
+            printArray(arr);
         }
+
+        System.out.println("\nSorted array: ");
+        printArray(arr);
     }
 
     public static void printArray(int[] arr) {
-        // The enhanced for loop visits each value in the array from left to right.
-        for (int value : arr) { // the : means "in" or "of" in this context.
+        for (int value : arr) {
             System.out.print(value + " ");
         }
         System.out.println();
@@ -54,10 +48,9 @@ public class SortingAlgo {
         printArray(numbers);
         System.out.println();
 
-        // Java passes the array reference to this method, so bubbleSort changes numbers directly.
         bubbleSort(numbers);
 
-        System.out.println("\nAfter sorting:");
+        System.out.println("\nFinal result:");
         printArray(numbers);
     }
 }
