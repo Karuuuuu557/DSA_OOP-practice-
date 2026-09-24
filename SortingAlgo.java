@@ -47,7 +47,7 @@ public class SortingAlgo {
                 bubbleSort(workingArray);
                 break;
             case 'B':
-                System.out.println("\nSELECTION SORT");
+                System.out.println("\nSELECTION SORT ");
                 selectionSort(workingArray);
                 break;
             case 'C':
