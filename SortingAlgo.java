@@ -19,21 +19,7 @@ public class SortingAlgo {
             arr[i] = scanner.nextInt();
         }
 
-        char choice;
-        do {
-            System.out.println("\nChoose a sorting algorithm:");
-            System.out.println("A. Bubble Sort");
-            System.out.println("B. Selection Sort");
-            System.out.println("C. Insertion Sort");
-            System.out.println("D. Merge Sort");
-            System.out.print("Enter A, B, C, or D: ");
-
-            choice = scanner.next().trim().toUpperCase().charAt(0);
-
-            if (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'D') {
-                System.out.println("Invalid choice! Please enter A, B, C, or D.");
-            }
-        } while (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'D');
+        char choice = readChoice(scanner);
 
         int[] workingArray = arr.clone();
 
@@ -47,7 +33,7 @@ public class SortingAlgo {
                 bubbleSort(workingArray);
                 break;
             case 'B':
-                System.out.println("\nSELECTION SORT ");
+                System.out.println("\nSELECTION SORT");
                 selectionSort(workingArray);
                 break;
             case 'C':
@@ -58,9 +44,6 @@ public class SortingAlgo {
                 System.out.println("\nMERGE SORT");
                 mergeSort(workingArray, 0, workingArray.length - 1);
                 break;
-            default:
-                System.out.println("No valid sorting algorithm selected.");
-                break;
         }
 
         System.out.println("\nFinal sorted array:");
@@ -69,15 +52,11 @@ public class SortingAlgo {
     }
 
     public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-
-        for (int i = 0; i < n - 1; i++) {
-            System.out.println("\nPass " + (i + 1) + ":");
-            for (int j = 0; j < n - i - 1; j++) {
+        for (int pass = 0; pass < arr.length - 1; pass++) {
+            System.out.println("\nPass " + (pass + 1) + ":");
+            for (int j = 0; j < arr.length - pass - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    swap(arr, j, j + 1);
                 }
             }
             printArray(arr);
@@ -85,9 +64,7 @@ public class SortingAlgo {
     }
 
     public static void selectionSort(int[] arr) {
-        int n = arr.length;
-
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
 
             for (int j = i + 1; j < n; j++) {
@@ -96,9 +73,7 @@ public class SortingAlgo {
                 }
             }
 
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
+            swap(arr, i, minIndex);
 
             System.out.println("\nStep " + (i + 1) + ":");
             printArray(arr);
@@ -106,9 +81,7 @@ public class SortingAlgo {
     }
 
     public static void insertionSort(int[] arr) {
-        int n = arr.length;
-
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < arr.length; i++) {
             int key = arr[i];
             int j = i - 1;
 
@@ -184,5 +157,36 @@ public class SortingAlgo {
             System.out.print(value + " ");
         }
         System.out.println();
+    }
+
+    private static char readChoice(Scanner scanner) {
+        char choice;
+
+        do {
+            System.out.println("\nChoose a sorting algorithm:");
+            System.out.println("A. Bubble Sort");
+            System.out.println("B. Selection Sort");
+            System.out.println("C. Insertion Sort");
+            System.out.println("D. Merge Sort");
+            System.out.print("Enter A, B, C, or D: ");
+
+            choice = scanner.next().trim().toUpperCase().charAt(0);
+
+            if (!isValidChoice(choice)) {
+                System.out.println("Invalid choice! Please enter A, B, C, or D.");
+            }
+        } while (!isValidChoice(choice));
+
+        return choice;
+    }
+
+    private static boolean isValidChoice(char choice) {
+        return choice >= 'A' && choice <= 'D';
+    }
+
+    private static void swap(int[] arr, int firstIndex, int secondIndex) {
+        int temporary = arr[firstIndex];
+        arr[firstIndex] = arr[secondIndex];
+        arr[secondIndex] = temporary;
     }
 }
