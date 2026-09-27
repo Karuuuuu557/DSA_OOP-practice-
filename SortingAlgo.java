@@ -54,13 +54,21 @@ public class SortingAlgo {
     public static void bubbleSort(int[] arr) {
         for (int pass = 0; pass < arr.length - 1; pass++) {
             System.out.println("\nPass " + (pass + 1) + ":");
+
             for (int j = 0; j < arr.length - pass - 1; j++) {
+                System.out.println("Compare index " + j + " (" + arr[j] + ") and index " + (j + 1) + " (" + arr[j + 1] + ")");
+
                 if (arr[j] > arr[j + 1]) {
+                    System.out.println("Swapping " + arr[j] + " and " + arr[j + 1]);
                     swap(arr, j, j + 1);
+                } else {
+                    System.out.println("No swap needed");
                 }
             }
             printArray(arr);
         }
+
+        System.out.println("\nBubble Sort completed.");
     }
 
     public static void selectionSort(int[] arr) {
@@ -78,6 +86,7 @@ public class SortingAlgo {
             System.out.println("\nStep " + (i + 1) + ":");
             printArray(arr);
         }
+        System.out.println("\nSelection Sort completed.");
     }
 
     public static void insertionSort(int[] arr) {
