@@ -74,16 +74,22 @@ public class SortingAlgo {
     public static void selectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
+            System.out.println("Step " + (i + 1) + ": Finding minimum from index " + i + " to " + (arr.length - 1));
 
             for (int j = i + 1; j < arr.length; j++) {
+                System.out.println("Compare index " + j + " (" + arr[j] + ") with current minimum index " + arr[minIndex] + " at index " + minIndex);
+
                 if (arr[j] < arr[minIndex]) {
                     minIndex = j;
+                    System.out.println("New minimum found at index " + arr[minIndex] + " at index " + minIndex);
                 }
-            }
-
-            swap(arr, i, minIndex);
-
-            System.out.println("\nStep " + (i + 1) + ":");
+            } 
+              if (minIndex != i) {
+                 System.out.println("Swap index " + i + " (" + arr[i] + ") with index " + minIndex + " (" + arr[minIndex] + ")");
+                 swap(arr, i, minIndex);
+                } else {
+                 System.out.println("The minimum is already in the correct position at index " + i);
+                }
             printArray(arr);
         }
         System.out.println("\nSelection Sort completed.");
@@ -103,6 +109,7 @@ public class SortingAlgo {
             System.out.println("\nInsert position " + i + ":");
             printArray(arr);
         }
+        System.out.println("\nInsertion Sort completed.");
     }
 
     public static void mergeSort(int[] arr, int left, int right) {
