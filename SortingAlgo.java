@@ -100,13 +100,18 @@ public class SortingAlgo {
             int key = arr[i];
             int j = i - 1;
 
+            System.out.println("Step " + i + ": Inserting " + key + " into the sorted portion of the array.");
+
             while (j >= 0 && arr[j] > key) {
+                System.out.println("Shift " + arr[j] + " from index " + j + " to index " + (j + 1));
                 arr[j + 1] = arr[j];
                 j--;
             }
 
             arr[j + 1] = key;
-            System.out.println("\nInsert position " + i + ":");
+
+            System.out.println("Placed " + key + " at index " + (j + 1));
+            System.out.println("Array after insertion:");
             printArray(arr);
         }
         System.out.println("\nInsertion Sort completed.");
