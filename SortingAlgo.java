@@ -118,13 +118,24 @@ public class SortingAlgo {
     }
 
     public static void mergeSort(int[] arr, int left, int right) {
-        if (left < right) {
-            int middle = left + (right - left) / 2;
-
-            mergeSort(arr, left, middle);
-            mergeSort(arr, middle + 1, right);
-            merge(arr, left, middle, right);
+        if (left >= right) {
+            if(left == right) {
+                System.out.println("Index " + left + " has one element (" + arr[left] + "). so it is already sorted.");
+            }
+            return;
         }
+
+        int middle = left + (right - left) / 2;
+
+        System.out.println("\nSplit indexes " + left + " to " + right + " at index " + middle);
+        System.out.println("Left half: indexes " + left + " to " + middle);
+        System.out.println("Right half: indexes " + (middle + 1) + " to " + right);
+        mergeSort(arr, left, middle);
+
+        System.out.println("Sort right half: indexes " + (middle + 1) +  " to " + right);
+        mergeSort(arr, middle + 1, right);
+        
+        merge(arr, left, middle, right);
     }
 
     public static void merge(int[] arr, int left, int middle, int right) {
