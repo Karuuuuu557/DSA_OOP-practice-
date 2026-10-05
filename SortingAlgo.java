@@ -122,7 +122,7 @@ public class SortingAlgo {
             if(left == right) {
                 System.out.println("Index " + left + " has one element (" + arr[left] + "). so it is already sorted.");
             }
-            return;
+            return;//oi
         }
 
         int middle = left + (right - left) / 2;
