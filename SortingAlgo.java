@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class SortingAlgo {
+    private static long randomState;
+    private static final long RANDOM_MODULUS = 2147483648L;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,11 +16,8 @@ public class SortingAlgo {
             return;
         }
 
-        int[] arr = new int[size];
-        System.out.print("Enter " + size + " array elements: ");
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
-        }
+        char arrayChoice = readArrayGenerationChoice(scanner);
+        int[] arr = createArray(size, arrayChoice, scanner);
 
         char choice = readChoice(scanner);
 
@@ -49,6 +49,75 @@ public class SortingAlgo {
         System.out.println("\nFinal sorted array:");
         printArray(workingArray);
         scanner.close();
+    }
+
+    private static int[] createArray(int size, char choice, Scanner scanner) {
+        int[] arr = new int[size];
+
+        if (choice == 'A' || choice == 'D' || choice == 'E') {
+            System.out.print("Enter a random seed (use a different seed for a different array): ");
+            randomState = scanner.nextLong() % RANDOM_MODULUS;
+            if (randomState < 0) {
+                randomState = -randomState;
+            }
+        }
+
+        switch (choice) {
+            case 'A':
+                for (int i = 0; i < size; i++) {
+                    arr[i] = nextRandomValue(201) - 100;
+                }
+                break;
+            case 'B':
+                for (int i = 0; i < size; i++) {
+                    arr[i] = i + 1;
+                }
+                break;
+            case 'C':
+                for (int i = 0; i < size; i++) {
+                    arr[i] = size - i;
+                }
+                break;
+            case 'D':
+                for (int i = 0; i < size; i++) {
+                    arr[i] = i + 1;
+                }
+                int swaps = size / 10;
+                if (swaps < 1) {
+                    swaps = 1;
+                }
+                for (int i = 0; i < swaps && size > 1; i++) {
+                    int firstIndex = nextRandomValue(size);
+                    int secondIndex = nextRandomValue(size);
+                    swap(arr, firstIndex, secondIndex);
+                }
+                break;
+            case 'E':
+                int valueRange = size / 3;
+                if (valueRange < 1) {
+                    valueRange = 1;
+                }
+                for (int i = 0; i < size; i++) {
+                    arr[i] = nextRandomValue(valueRange);
+                }
+                if (size > 1) {
+                    arr[1] = arr[0];
+                }
+                break;
+            case 'F':
+                System.out.print("Enter " + size + " array elements: ");
+                for (int i = 0; i < size; i++) {
+                    arr[i] = scanner.nextInt();
+                }
+                break;
+        }
+
+        return arr;
+    }
+
+    private static int nextRandomValue(int bound) {
+        randomState = (randomState * 1103515245L + 12345L) % RANDOM_MODULUS;
+        return (int) (randomState % bound);
     }
 
     public static void bubbleSort(int[] arr) {
@@ -208,6 +277,29 @@ public class SortingAlgo {
                 System.out.println("Invalid choice! Please enter A, B, C, or D.");
             }
         } while (!isValidChoice(choice));
+
+        return choice;
+    }
+
+    private static char readArrayGenerationChoice(Scanner scanner) {
+        char choice;
+
+        do {
+            System.out.println("\nChoose how to create the array:");
+            System.out.println("A. Random array");
+            System.out.println("B. Already sorted");
+            System.out.println("C. Reverse sorted");
+            System.out.println("D. Mostly sorted");
+            System.out.println("E. Array with duplicates");
+            System.out.println("F. Enter elements manually");
+            System.out.print("Enter A, B, C, D, E, or F: ");
+
+            choice = scanner.next().trim().toUpperCase().charAt(0);
+
+            if (choice < 'A' || choice > 'F') {
+                System.out.println("Invalid choice! Please enter A, B, C, D, E, or F.");
+            }
+        } while (choice < 'A' || choice > 'F');
 
         return choice;
     }
