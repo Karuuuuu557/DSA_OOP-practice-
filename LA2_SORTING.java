@@ -205,7 +205,7 @@ public class LA2_SORTING {
             i++;
             k++;
         }
-
+//hello streak
         // Add remaining values from the right part
         while (j < n2) {
             arr[k] = rightArray[j];
