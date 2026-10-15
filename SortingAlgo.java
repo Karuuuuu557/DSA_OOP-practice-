@@ -213,7 +213,7 @@ public class SortingAlgo {
 
         int[] leftArray = new int[n1];
         int[] rightArray = new int[n2];
-
+//SHET SHET SHET
         for (int i = 0; i < n1; i++) {
             leftArray[i] = arr[left + i];
         }
