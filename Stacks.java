@@ -51,7 +51,7 @@ public class Stacks {
             System.out.println("Cannot push " + value + ": stack is full.");
             return;
         }
-
+//holy moly
         top++;
         stack[top] = value;
     }
