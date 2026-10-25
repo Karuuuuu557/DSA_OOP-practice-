@@ -45,13 +45,12 @@ public class Stacks {
         System.out.print("Final stack: ");
         printStack();
     }
-//HOIII STREAK YA
+//HOIII STREAK YAAA
     private static void push(int value) {
         if (top == stack.length - 1) {
             System.out.println("Cannot push " + value + ": stack is full.");
             return;
         }
-//holy moly
         top++;
         stack[top] = value;
     }
