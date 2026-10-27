@@ -45,7 +45,7 @@ public class Stacks {
         System.out.print("Final stack: ");
         printStack();
     }
-//HOIII STREAK YAAAAAA
+//HOIII STREAK YAAAAAA YOOOO
     private static void push(int value) {
         if (top == stack.length - 1) {
             System.out.println("Cannot push " + value + ": stack is full.");
